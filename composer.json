@@ -1,0 +1,37 @@
+{
+  "name": "studiomitte/urlguard2",
+  "keywords": [
+    "TYPO3",
+    "extension",
+    "addQueryString"
+  ],
+  "authors": [
+    {
+      "name": "Georg Ringer",
+      "role": "Developer",
+      "homepage": "https://studiomitte.com"
+    }
+  ],
+  "type": "typo3-cms-extension",
+  "description": "Stop cache poisoning via addQueryString",
+  "homepage": "https://studiomitte.com",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "require": {
+    "typo3/cms-core": "^9.5.16 || ^10.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "StudioMitte\\Urlguard2\\": "Classes"
+    }
+  },
+  "replace": {
+    "typo3-ter/urlguard2": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "urlguard2"
+    }
+  }
+}
