@@ -13,13 +13,13 @@
     }
   ],
   "type": "typo3-cms-extension",
-  "description": "Stop cache poisoning via addQueryString",
+  "description": "Stop cache poisoning via addQueryString and just keep those parameters which are mapped via routing configuration",
   "homepage": "https://studiomitte.com",
   "license": [
     "GPL-2.0-or-later"
   ],
   "require": {
-    "typo3/cms-core": "^9.5.16 || ^10.3"
+    "typo3/cms-core": "^9.5 || ^10.4"
   },
   "autoload": {
     "psr-4": {
