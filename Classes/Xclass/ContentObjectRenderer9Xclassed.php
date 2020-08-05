@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class ContentObjectRenderer9Xclassed extends ContentObjectRenderer {
@@ -49,7 +50,9 @@ class ContentObjectRenderer9Xclassed extends ContentObjectRenderer {
         if ($request) {
             /** @var PageArguments $pageArguments */
             $pageArguments = $request->getAttribute('routing');
-            $newQueryArray = array_intersect($pageArguments->getRouteArguments(), $newQueryArray);
+            if ($pageArguments instanceof PageArguments) {
+                $newQueryArray = array_intersect($pageArguments->getRouteArguments(), $newQueryArray);
+            }
         }
         // end xclass
 

@@ -55,7 +55,9 @@ class ContentObjectRenderer10Xclassed extends ContentObjectRenderer {
         if ($request) {
             /** @var PageArguments $pageArguments */
             $pageArguments = $request->getAttribute('routing');
-            $newQueryArray = array_intersect($pageArguments->getRouteArguments(), $newQueryArray);
+            if ($pageArguments instanceof PageArguments) {
+                $newQueryArray = array_intersect($pageArguments->getRouteArguments(), $newQueryArray);
+            }
         }
         // end xclass
 
