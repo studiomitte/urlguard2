@@ -6,4 +6,4 @@ It limits the `addQueryString` configuration to only those parameters currently 
 
 ## Usage
 
-Install it and done.
+Install it with `composer req studiomitte/urlguard2` and done.
