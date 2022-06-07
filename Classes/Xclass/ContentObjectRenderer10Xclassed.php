@@ -8,7 +8,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
-class ContentObjectRenderer10Xclassed extends ContentObjectRenderer {
+class ContentObjectRenderer10Xclassed extends ContentObjectRenderer
+{
 
 
     /**
@@ -56,7 +57,7 @@ class ContentObjectRenderer10Xclassed extends ContentObjectRenderer {
             /** @var PageArguments $pageArguments */
             $pageArguments = $request->getAttribute('routing');
             if ($pageArguments instanceof PageArguments) {
-                $newQueryArray = array_intersect($pageArguments->getRouteArguments(), $newQueryArray);
+                $newQueryArray = $this->recursive_array_intersect_key($pageArguments->getRouteArguments(), $newQueryArray);
             }
         }
         // end xclass
@@ -64,5 +65,15 @@ class ContentObjectRenderer10Xclassed extends ContentObjectRenderer {
         return HttpUtility::buildQueryString($newQueryArray, '&');
     }
 
+    protected function recursive_array_intersect_key(array $array1, array $array2)
+    {
+        $array1 = array_intersect_key($array1, $array2);
+        foreach ($array1 as $key => &$value) {
+            if (is_array($value) && is_array($array2[$key])) {
+                $value = $this->recursive_array_intersect_key($value, $array2[$key]);
+            }
+        }
+        return $array1;
+    }
 
 }
