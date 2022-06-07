@@ -57,7 +57,7 @@ class ContentObjectRenderer10Xclassed extends ContentObjectRenderer
             /** @var PageArguments $pageArguments */
             $pageArguments = $request->getAttribute('routing');
             if ($pageArguments instanceof PageArguments) {
-                $newQueryArray = $this->recursive_array_intersect_key($pageArguments->getRouteArguments(), $newQueryArray);
+                $newQueryArray = ArrayUtility::intersectRecursive($pageArguments->getRouteArguments(), $newQueryArray);
             }
         }
         // end xclass

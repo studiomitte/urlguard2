@@ -9,14 +9,22 @@ $boot = static function () {
         $typo3VersionSplit = explode('.', TYPO3_branch);
         $version = (int)$typo3VersionSplit[0];
     }
-    if ($version === 9) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class] = [
-            'className' => \StudioMitte\Urlguard2\Xclass\ContentObjectRenderer9Xclassed::class,
-        ];
-    } else {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class] = [
-            'className' => \StudioMitte\Urlguard2\Xclass\ContentObjectRenderer10Xclassed::class,
-        ];
+
+    switch ($version) {
+        case 9:
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class] = [
+                'className' => \StudioMitte\Urlguard2\Xclass\ContentObjectRenderer9Xclassed::class,
+            ];
+            break;
+        case 10:
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class] = [
+                'className' => \StudioMitte\Urlguard2\Xclass\ContentObjectRenderer10Xclassed::class,
+            ];
+            break;
+        case 11:
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class] = [
+                'className' => \StudioMitte\Urlguard2\Xclass\ContentObjectRenderer11Xclassed::class,
+            ];
     }
 };
 
